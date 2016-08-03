@@ -1,5 +1,5 @@
 /*!
- * jquery.mcalendar.js 0.0.1 - https://github.com/lgcjh0s/jquery.mcalendar.js
+ * jquery.mcalendar.js 0.0.1 - https://github.com/lgcjh0s/mcalendar/blob/master/jquery.mcalendar.js
  * Render Calendar User Interface
  *
  * Copyright (c) 2016 Hongdae Son
