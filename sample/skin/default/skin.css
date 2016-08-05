@@ -1,1 +1,13 @@
-.tb_cal{width:100%;}
+.exp_calendar .cal_con .tb_cal{border-collapse:collapse;border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+.exp_calendar .cal_con .tb_cal th{border:1px solid #eee;height:20px;line-height:20px;width:14%;font-size:12px;color:#999;font-weight:normal;}
+.exp_calendar .cal_con .tb_cal td{height:50px;border:1px solid #eee;}
+.exp_calendar .cal_wrap{height:60px;}
+.exp_calendar .cal_wrap .cal_title{position:absolute;left:50px;right:50px;height:60px;line-height:60px;text-align:center;font-size:22px;}
+.exp_calendar .cal_wrap .btn_cal_prev{position:absolute;left:0px;width:50px;height:60px;}
+.exp_calendar .cal_wrap .btn_cal_next{position:absolute;right:0px;width:50px;height:60px;}
+.exp_calendar .cal_con .tb_cal td .cal_inner{padding:3px;}
+.exp_calendar .cal_con .tb_cal td .cal_inner .day_inx{height:20px;line-height:20px;color:#999;font-size:12px;}
+.exp_calendar .cal_con .tb_cal td .cal_inner .day_desc{height:30px;line-height:30px;color:#666;text-align:right;font-size:13px;}
+.exp_calendar .cal_con .tb_cal td .cal_inner .day_desc .cal_count{display:inline-block;text-align:center;width:30px;height:30px;line-height:33px;color:#fff;background-image:url(../../image/btn_data_click.png);}
+.exp_calendar .cal_con .tb_cal td .cal_inner .day_desc .cal_count.on{color:#cc3300;}
+.calrow_btn{position:absolute;right:10px;width:40px;height:45px;text-align:center;margin-top:-32px;}
