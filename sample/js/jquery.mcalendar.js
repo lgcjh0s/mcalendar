@@ -8,11 +8,10 @@
  **/
 (function($) {
 	
-	var mcalendar = {
-		skin: 'default',
-		templates: [],
-		
-		getLastDate: function(year, month) {
+var mcalendar = {
+skin: 'default',
+templates: [],
+getLastDate: function(year, month) {
       var next = parseInt(month, 10) + 1;
       return new Date(year, next - 1, 0).getDate();
     },
