@@ -90,73 +90,74 @@
     },
     
     loadCss: function(target) {
-			$.get('./skin/' + mcalendar.skin + '/skin.css', function(data) {
-				$(target).append('<style type="text/css">' + data + '</style>');
-			});
+      $.get('./skin/' + mcalendar.skin + '/skin.css', function(data) {
+        $(target).append('<style type="text/css">' + data + '</style>');
+      });
     },
 	    
-		draw: function(y, m, target, options) {
+    draw: function(y, m, target, options) {
 		
-			if (!options) options = {};
-			layout = $(this.template['monthly_view']);
+      if (!options) options = {};
+      layout = $(this.template['monthly_view']);
 
-			var date = new Date(y, m, 1);
-			var month = mcalendar.getMonth(date);
+      var date = new Date(y, m, 1);
+      var month = mcalendar.getMonth(date);
 			
-			layout.find('.cal_title').text(mcalendar.format(date, 'yyyy.MM'));
-			var tbody = layout.find('table.tb_cal tbody');
-			tbody.empty();
+      layout.find('.cal_title').text(mcalendar.format(date, 'yyyy.MM'));
+      var tbody = layout.find('table.tb_cal tbody');
+      tbody.empty();
 			
-			var dailyViewFnc = options.dailyViewFnc;
-			var tr = null,
-					td = null;
+      var dailyViewFnc = options.dailyViewFnc;
+      var tr = null,
+          td = null;
 			
-			for (var inx=0; inx<month.length; inx++) {
-				if (inx % 7 == 0) {
-					if (tr != null) tbody.append(tr);
-					tr = $('<tr>');
-				}
-				td = $('<td>');
+      for (var inx=0; inx<month.length; inx++) {
+        if (inx % 7 == 0) {
+          if (tr != null) tbody.append(tr);
+          tr = $('<tr>');
+        }
+        td = $('<td>');
 				
-				if (month[inx]) {
-					td.addClass('toucheffect');
-					td.addClass('cal_box');
-					if (dailyViewFnc && typeof dailyViewFnc == 'function') {
-						dailyViewFnc(inx, td, month[inx]);
-					} else {
-						td.html(month[inx].getDate());
-					}
-				}
-				tr.append(td);
-			}
+        if (month[inx]) {
+          td.addClass('toucheffect');
+          td.addClass('cal_box');
+          if (dailyViewFnc && typeof dailyViewFnc == 'function') {
+            dailyViewFnc(inx, td, month[inx]);
+          } else {
+            td.html(month[inx].getDate());
+          }
+        }
+        tr.append(td);
+      }
 			
-			if (month.length % 7 > 0) {
-				var remain = 7 - (month.length % 7);
-				for (var inx=0; inx<remain; inx++) {
-					td = $('<td>');
-					if (dailyViewFnc && typeof dailyViewFnc == 'function') {
-						dailyViewFnc(month.length + inx, td, null);
-					} else {
-						td.html('');
-					}
-					tr.append(td);
-				}
-			}
-			tbody.append(tr);
-			$(target).append(layout);
-		},
-	};
+      if (month.length % 7 > 0) {
+        var remain = 7 - (month.length % 7);
+        for (var inx=0; inx<remain; inx++) {
+          td = $('<td>');
+          if (dailyViewFnc && typeof dailyViewFnc == 'function') {
+            dailyViewFnc(month.length + inx, td, null);
+          } else {
+            td.html('');
+          }
+          tr.append(td);
+        }
+      }
+      
+      tbody.append(tr);
+      $(target).append(layout);
+    },
+  };
+
+  $.mcalendar = function() {};
+  $.mcalendar.setSkin = function(skin) {
+    mcalendar.skin = skin;
+  };
 	
-	$.mcalendar = function() {};
-	$.mcalendar.setSkin = function(skin) {
-		mcalendar.skin = skin;
-	};
-	
-	jQuery.fn.mcalendar = function(y, m, options) {
-		var target = $(this);
-		mcalendar.loadCss(target);
-		mcalendar.loadLayout('monthly_view', function() {
-			mcalendar.draw(y, m, target, options);
-		});
-	};
+  jQuery.fn.mcalendar = function(y, m, options) {
+    var target = $(this);
+    mcalendar.loadCss(target);
+    mcalendar.loadLayout('monthly_view', function() {
+      mcalendar.draw(y, m, target, options);
+    });
+  };
 }(jQuery));
