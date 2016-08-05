@@ -88,11 +88,17 @@
         if (callback) callback();
       });
     },
+    
+    loadCss: function(target) {
+			$.get('./' + mcalendar.skin + '/skin.css', function(data) {
+				$(target).append('<style type="text/css">' + data + '</style>');
+			});
+    }
 	    
-    draw: function(y, m, layout, options) {
+		draw: function(y, m, target, options) {
 			
 			if (!options) options = {};
-			layout = $(layout);
+			layout = $(this.template['monthly_view']);
 
 			var date = new Date(y, m, 1);
 			var month = mcalendar.getMonth(date);
@@ -138,6 +144,7 @@
 				}
 			}
 			tbody.append(tr);
+			$(target).append(layout);
 		},
 	};
 	
@@ -147,8 +154,10 @@
 	};
 	
 	jQuery.fn.mcalendar = function(y, m, options) {
-		mcalendar.loadLayout('layout_daily', function() {
-			mcalendar.draw(y, m, this, options);
+		var target = $(this);
+		mcalendar.loadCss(target);
+		mcalendar.loadLayout('monthly_view', function() {
+			mcalendar.draw(y, m, target, options);
 		});
 	};
 }(jQuery));
