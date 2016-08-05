@@ -83,14 +83,14 @@
     },
 	    
     loadLayout: function(uri, callback) {
-      $.get('./' + mcalendar.skin + '/' + uri +'.html', function(data) {
+      $.get('./skin/' + mcalendar.skin + '/' + uri +'.html', function(data) {
         mcalendar.templates[uri] = data;
         if (callback) callback();
       });
     },
     
     loadCss: function(target) {
-			$.get('./' + mcalendar.skin + '/skin.css', function(data) {
+			$.get('./skin/' + mcalendar.skin + '/skin.css', function(data) {
 				$(target).append('<style type="text/css">' + data + '</style>');
 			});
     }
@@ -108,9 +108,9 @@
 			var tbody = layout.find('table.tb_cal tbody');
 			tbody.empty();
 			
-			var dayDispFunc = options.dayDispFunc;
+			var dailyViewFnc = options.dailyViewFnc;
 			var tr = null,
-				td = null;
+					td = null;
 			
 			for (var inx=0; inx<month.length; inx++) {
 				if (inx % 7 == 0) {
@@ -122,8 +122,8 @@
 				if (month[inx]) {
 					td.addClass('toucheffect');
 					td.addClass('cal_box');
-					if (dayDispFunc && typeof dayDispFunc == 'function') {
-						dayDispFunc(inx, td, month[inx]);
+					if (dailyViewFnc && typeof dailyViewFnc == 'function') {
+						dailyViewFnc(inx, td, month[inx]);
 					} else {
 						td.html(month[inx].getDate());
 					}
@@ -135,8 +135,8 @@
 				var remain = 7 - (month.length % 7);
 				for (var inx=0; inx<remain; inx++) {
 					td = $('<td>');
-					if (dayDispFunc && typeof dayDispFunc == 'function') {
-						dayDispFunc(month.length + inx, td, null);
+					if (dailyViewFnc && typeof dailyViewFnc == 'function') {
+						dailyViewFnc(month.length + inx, td, null);
 					} else {
 						td.html('');
 					}
