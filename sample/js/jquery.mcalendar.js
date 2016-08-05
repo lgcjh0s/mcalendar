@@ -96,7 +96,7 @@
     },
 	    
 		draw: function(y, m, target, options) {
-			
+		
 			if (!options) options = {};
 			layout = $(this.template['monthly_view']);
 
@@ -104,7 +104,6 @@
 			var month = mcalendar.getMonth(date);
 			
 			layout.find('.cal_title').text(mcalendar.format(date, 'yyyy.MM'));
-			
 			var tbody = layout.find('table.tb_cal tbody');
 			tbody.empty();
 			
