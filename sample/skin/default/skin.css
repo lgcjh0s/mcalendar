@@ -1,4 +1,4 @@
-.exp_calendar .cal_con .tb_cal{border-collapse:collapse;border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+.exp_calendar .cal_con .tb_cal{border-collapse:collapse;border-top:1px solid #ccc;border-bottom:1px solid #ccc;width:100%;}
 .exp_calendar .cal_con .tb_cal th{border:1px solid #eee;height:20px;line-height:20px;width:14%;font-size:12px;color:#999;font-weight:normal;}
 .exp_calendar .cal_con .tb_cal td{height:50px;border:1px solid #eee;}
 .exp_calendar .cal_wrap{height:60px;}
