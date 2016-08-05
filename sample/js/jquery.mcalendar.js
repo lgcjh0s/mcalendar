@@ -93,7 +93,7 @@
 			$.get('./skin/' + mcalendar.skin + '/skin.css', function(data) {
 				$(target).append('<style type="text/css">' + data + '</style>');
 			});
-    }
+    },
 	    
 		draw: function(y, m, target, options) {
 			
